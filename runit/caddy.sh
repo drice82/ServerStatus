@@ -1,1 +1,2 @@
-caddy -conf /caddy/Caddyfile
+#!/bin/sh
+exec caddy -conf /caddy/Caddyfile
