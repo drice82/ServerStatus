@@ -13,16 +13,16 @@ RUN rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 CMD ["/sbin/my_init"]
 
 COPY /server /ServerStatus/server
-COPY /web /ServerStatus/www
+COPY /web /ServerStatus/web
 
 # 这里可以放置你自己需要构建的命令
 RUN apt-get update \
     && apt-get -y install gcc g++ make git \
 #    && git clone https://github.com/drice82/ServerStatus \
 #    && cp -rf /ServerStatus/web/* /usr/share/nginx/html/ \
-    && cd /ServerStatus/server
+    && cd /ServerStatus/server \
     && make \
-    && pwd && ls -a
+    && pwd && ls -a \
 
 # 当完成后,清除APT.
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
