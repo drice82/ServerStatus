@@ -23,6 +23,7 @@ RUN apt-get update \
     && cd /ServerStatus/server \
     && make \
     && pwd && ls -a \
+    && curl https://getcaddy.com | bash -s personal
 
 # 当完成后,清除APT.
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
