@@ -36,4 +36,4 @@ COPY /runit/caddy.sh /etc/service/caddy/run
 RUN chmod u+x /etc/service/status/run \
     && chmod u+x /etc/service/caddy/run
 
-EXPOSE 80 35601
+EXPOSE 8888 35601
