@@ -1,4 +1,3 @@
-http://sgp9.acrossgw.info {
-    root /ServerStatus/web/
-    gzip
-}
+:80
+root /ServerStatus/web/
+gzip

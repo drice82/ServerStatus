@@ -25,8 +25,8 @@ RUN apt-get update \
     && pwd && ls -a \
     && curl https://getcaddy.com | bash -s personal \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-#    && mkdir /etc/service/status \
-#    && mkdir /etc/service/caddy
+    && mkdir /etc/service/status \
+    && mkdir /etc/service/caddy
     
 #copy scripts
 COPY /runit/status.sh /etc/service/status/run
