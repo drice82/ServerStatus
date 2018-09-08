@@ -14,6 +14,7 @@ CMD ["/sbin/my_init"]
 
 COPY /server /ServerStatus/server
 COPY /web /ServerStatus/web
+COPY /caddy /caddy
 
 # 这里可以放置你自己需要构建的命令
 RUN apt-get update \
