@@ -14,10 +14,11 @@ RUN apt-get update \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && mkdir /etc/service/ServerStatus
 
-COPY /clients /home
+COPY /root /
 
 #copy scripts
-COPY /runit/status.sh /etc/service/ServerStatus/run
+COPY /runit/ServerStatus.sh /etc/service/ServerStatus/run
 
 #文件权限
-RUN chmod u+x /etc/service/ServerStatus/run 
+RUN chmod u+x /etc/service/ServerStatus/run
+
