@@ -16,6 +16,8 @@ COPY /server /ServerStatus/server
 COPY /web /ServerStatus/web
 COPY /caddy /caddy
 
+
+
 # 这里可以放置你自己需要构建的命令
 RUN apt-get update \
     && apt-get -y install gcc g++ make git \
@@ -24,10 +26,19 @@ RUN apt-get update \
     && cd /ServerStatus/server \
     && make \
     && pwd && ls -a \
-    && curl https://getcaddy.com | bash -s personal
+    && curl https://getcaddy.com | bash -s personal \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && mkdir /etc/service/status \
+    && mkdir /etc/service/caddy
+    
+    
+#copy scripts
+COPY /runit/status.sh /etc/service/status/run
+COPY /runit/caddy.sh /etc/service/caddy/run
 
-# 当完成后,清除APT.
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#文件权限
+RUN chmod u+x /etc/service/status/run \
+    && chmod u+x /etc/service/caddy/run
 
 WORKDIR /ServerStatus/server
 EXPOSE 80 35601
