@@ -1,3 +1,9 @@
+# 更新：
+* 一键Docker
+```
+docker run -d --restart=always --name=serverstatus -v /home/ServerStatus/config.json:/ServerStatus/server/config.json -p 8888:8888 -p 35601:35601 drice64/serverstatus:latest
+```
+
 # ServerStatus中文版：   
 
 * ServerStatus中文版是一个酷炫高逼格的云探针、云监控、服务器云监控、多服务器探针~。
